@@ -104,7 +104,7 @@ class RestaurantController extends Controller
                 'api_token' => hash('sha256', $token),
             ])->save();
             return json_encode(['respuesta' => 'Bienvenido',
-                'token' => $token]);
+                                'token' => $token]);
         }
         return json_encode(['respuesta' => 'Usuario y/o contraseña incorrectos']);
     }

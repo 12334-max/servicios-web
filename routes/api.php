@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RestaurantController;
+use App\Http\Controllers\PlatilloController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +21,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/login',[RestaurantController::class,'loginREST']);
+
+Route::middleware('auth:api')->group( function() {
+    Route::get('/platillos',[PlatilloController::class,'listaREST']);
+});
