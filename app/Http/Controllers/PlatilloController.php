@@ -88,7 +88,9 @@ class PlatilloController extends Controller
         $user = Auth::user();
         if( $user!=null ) {
             $id = $user->restaurant->id;
-            $platillos = Platillo::where('id_restaurant','=',$id)->get();
+            $busqueda = $request->input('txt');
+            $platillos = Platillo::where('id_restaurant','=',$id)
+                        ->where('nombre','like','%' . $busqueda . '%')->get();
             return $platillos;
         }
         return "Acceso Restringido";

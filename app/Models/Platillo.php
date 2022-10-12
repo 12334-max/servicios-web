@@ -10,4 +10,6 @@ class Platillo extends Model
     use HasFactory;
 
     protected $table = 'platillo';
+    public $timestamps = false;
+
 }
