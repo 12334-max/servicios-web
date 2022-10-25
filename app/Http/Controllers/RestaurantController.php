@@ -108,4 +108,11 @@ class RestaurantController extends Controller
         }
         return json_encode(['respuesta' => 'Usuario y/o contraseña incorrectos']);
     }
+
+    public function validaToken(Request $request) {
+        if( Auth::guard('api')->check(['api_token' => $request->input('api_token')]) ) {
+            return "VALIDO";
+        }
+        return "DENEGADO";
+    }
 }

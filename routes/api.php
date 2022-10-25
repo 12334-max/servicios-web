@@ -21,7 +21,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/login',[RestaurantController::class,'loginREST']);
+Route::get('/validatoken',[RestaurantController::class,'validaToken']);
 
 Route::middleware('auth:api')->group( function() {
     Route::get('/platillos',[PlatilloController::class,'listaREST']);
+    Route::post('/platillos',[PlatilloController::class,'storeREST']);
 });

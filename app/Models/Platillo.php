@@ -11,5 +11,4 @@ class Platillo extends Model
 
     protected $table = 'platillo';
     public $timestamps = false;
-
 }

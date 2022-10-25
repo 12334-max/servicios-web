@@ -95,4 +95,25 @@ class PlatilloController extends Controller
         }
         return "Acceso Restringido";
     }
+
+    public function storeREST(Request $request) {
+        $user = Auth::user();
+        if( $user!=null ) {
+            $id = $user->restaurant->id;
+            
+            //Registrar nuevo platillo
+            $platillo = new Platillo;
+            $platillo->id_restaurant = $id;
+            $platillo->nombre = $request->input("nombre");
+            $platillo->descripcion = $request->input("descr");
+            $platillo->precio = $request->input("precio");
+            $platillo->categoria = $request->input("cat");
+            $platillo->status = "DISPONIBLE";
+            $platillo->imagen = '';
+            $platillo->save();
+
+            return "OK";
+        }
+        return "Acceso Restringido";
+    }
 }
